@@ -19,7 +19,7 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-         root_file: model.tex
+         root_file: final.tex
       - name: Commit changes
         uses: EndBug/add-and-commit@v7
         with:
