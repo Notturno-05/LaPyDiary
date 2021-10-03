@@ -1,5 +1,5 @@
 \documentclass[oneside]{book}
-\usepackage{ifthen}\title{\Huge An unremarkable Diary\\\Large of unremarkable things\\ \small By an unremarkable person}
+\usepackage{ifthen}\title{\Huge An unremarkable Diary\\\Large of unremarkable things\\ \small By an unremarkable person}% change this as you please
 \date{}
 \author{Mattia Mascarello}
 \usepackage{titlesec}
@@ -9,6 +9,7 @@
 {}                % label
 {0pt}             % sep
 {\huge}   
+% determine day ordinal from day number
 \newcommand*{\dayOrdinalSuffix}[1]
 {
 	\ifthenelse{\equal{#1}{1}}{st}{
@@ -37,7 +38,8 @@
 	
 	\tableofcontents
 \chapter{Preamble}
-o
+\blindtext
+%set this as you please
 \newpage
 REPLACETHIS
 \end{document} 
