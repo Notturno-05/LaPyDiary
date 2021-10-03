@@ -1,0 +1,43 @@
+\documentclass[oneside]{book}
+\usepackage{ifthen}\title{\Huge An unremarkable Diary\\\Large of unremarkable things\\ \small By an unremarkable person}
+\date{}
+\author{Mattia Mascarello}
+\usepackage{titlesec}
+\usepackage{blindtext}
+\titleformat{\chapter}
+{\Large\bfseries} % format
+{}                % label
+{0pt}             % sep
+{\huge}   
+\newcommand*{\dayOrdinalSuffix}[1]
+{
+	\ifthenelse{\equal{#1}{1}}{st}{
+		\ifthenelse{\equal{#1}{2}}{nd}{
+			\ifthenelse{\equal{#1}{3}}{rd}{
+				\ifthenelse{\equal{#1}{21}}{st}{
+					\ifthenelse{\equal{#1}{22}}{nd}{
+						\ifthenelse{\equal{#1}{23}}{rd}{th}
+					}
+				}
+			}	
+		}
+	}
+}
+\newcommand*{\justifyheading}{\raggedleft}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}} % set the \leftmark
+\titleformat{\section}{\normalfont\Large\bfseries}{}{0pt}{}
+\titleformat{\subsection}{\normalfont\small\bfseries\justifyheading}{}{0pt}{}[{\titlerule[0.8pt]}]
+\newcommand{\dayH}[3]{
+	\subsection{#1 $#2^{\protect\dayOrdinalSuffix{#2}}$}
+	\begin{flushright}#3\end{flushright}}
+\newcommand{\yearH}[1]{\chapter{$#1$}}
+\newcommand{\monthH}[1]{\section{#1}}
+\begin{document}
+	\maketitle
+	
+	\tableofcontents
+\chapter{Preamble}
+o
+\newpage
+REPLACETHIS
+\end{document} 
