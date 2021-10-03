@@ -1,0 +1,28 @@
+name: Build LaTeX document
+on:
+  push:
+    paths:
+      - 'diarydata/*'
+      . 'model.tex'
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      with:
+          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+      - run: python gen.py
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+         root_file: model.tex
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: LaTexCompiler
+          message: 'Compiled LaTeX into PDF'
+          add: '["*.pdf"]'
